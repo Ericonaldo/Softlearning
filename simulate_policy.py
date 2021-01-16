@@ -116,6 +116,12 @@ if __name__ == '__main__':
         config = 'config.halfcheetah'
     elif args.env == 'Humanoid-v2':
         config = 'config.humanoid'
+    elif args.env == 'InvertedPendulum-v2':
+        config = 'config.invertedpendulum'
+    elif args.env == 'InvertedDoublePendulum-v2':
+        config = 'config.inverteddoublependulum'
+    elif args.env == 'Pendulum':
+        config = 'config.pendulum'
 
     module = importlib.import_module(config)
     params = getattr(module, 'params')

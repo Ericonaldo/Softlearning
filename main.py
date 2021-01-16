@@ -3,12 +3,15 @@ import importlib
 import runner
 import os
 from softlearning.misc.utils import set_seed
+from pathlib import Path
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--env', type=str, required=True)
     parser.add_argument('--seed', type=int, default=0)
     parser.add_argument('--checkpoint_dir', type=str, default='./checkpoint/')
+    parser.add_argument('--log_dir', type=str, default='./log/')
+    parser.add_argument('--video_dir', type=str, default='./log/')
     args = parser.parse_args()
 
     if args.env == 'Hopper-v2':
@@ -23,10 +26,24 @@ if __name__ == '__main__':
         config = 'config.halfcheetah'
     elif args.env == 'Humanoid-v2':
         config = 'config.humanoid'
+    elif args.env == 'InvertedPendulum-v2':
+        config = 'config.invertedpendulum'
+    elif args.env == 'InvertedDoublePendulum-v2':
+        config = 'config.inverteddoublependulum'
+    elif args.env == 'Pendulum':
+        config = 'config.pendulum'
 
     module = importlib.import_module(config)
     params = getattr(module, 'params')
     universe, domain, task = params['universe'], params['domain'], params['task']
+
+    log_dir = Path(args.log_dir).joinpath(domain)
+    ckp_dir = Path(args.checkpoint_dir).joinpath(domain)
+    video_dir = Path(args.video_dir).joinpath(domain)
+
+    log_dir.mkdir(exist_ok=True, parents=True)
+    ckp_dir.mkdir(exist_ok=True, parents=True)
+    video_dir.mkdir(exist_ok=True, parents=True)
 
     '''
     NUM_EPOCHS_PER_DOMAIN = {
@@ -45,7 +62,10 @@ if __name__ == '__main__':
         'Walker2d': int(3),
         'Ant': int(3),
         'Humanoid': int(3),
-        'Swimmer': int(3)
+        'Swimmer': int(3),
+        'InvertedPendulum': int(3),
+        'InvertedDoublePendulum': int(3),
+        'Pendulum': int(3),
     }
 
     NUM_EPOCHS_PER_ITER = {
@@ -54,7 +74,10 @@ if __name__ == '__main__':
         'Walker2d': int(1e3),
         'Ant': int(1e3),
         'Humanoid': int(1e3),
-        'Swimmer': int(1e3)
+        'Swimmer': int(1e3),
+        'InvertedPendulum': int(1e2),
+        'InvertedDoublePendulum': int(1e2),
+        'Pendulum': int(1e2),
     }
 
     # params['kwargs']['n_epochs'] = NUM_EPOCHS_PER_DOMAIN[domain]
