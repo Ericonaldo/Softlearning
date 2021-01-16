@@ -5,6 +5,9 @@ SAC, 50 expert traj, Deterministic Policy in testing
 
 | Envs | Mean | Std
 | ----  | ----  | ----  |
+| Pendulum | -147.5398 | 81.7622 |
+| InvertedPendulum | 1000.0000 | 0.0000 |
+| InvertedDoublePendulum | 9358.7842 | 0.3963 |
 | Ant | 5404.5532 | 1520.4961 |
 | Hopper | 3402.9494 | 446.4877 |
 | Humanoid | 6043.9907 | 726.1788 |

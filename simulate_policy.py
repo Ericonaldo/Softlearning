@@ -144,7 +144,10 @@ if __name__ == '__main__':
         'Walker2d': int(3),
         'Ant': int(3),
         'Humanoid': int(3),
-        'Swimmer': int(3)
+        'Swimmer': int(3),
+        'InvertedPendulum': int(3),
+        'InvertedDoublePendulum': int(3),
+        'Pendulum': int(3),
     }
 
     NUM_EPOCHS_PER_ITER = {
@@ -153,7 +156,10 @@ if __name__ == '__main__':
         'Walker2d': int(1e3),
         'Ant': int(1e3),
         'Humanoid': int(1e3),
-        'Swimmer': int(1e3)
+        'Swimmer': int(1e3),
+        'InvertedPendulum': int(1e2),
+        'InvertedDoublePendulum': int(1e2),
+        'Pendulum': int(1e2),
     }
 
     params['kwargs']['n_epochs'] = NUM_EPOCHS_PER_ITER[domain]
@@ -229,6 +235,7 @@ if __name__ == '__main__':
             os.makedirs(save_path)
         save_path = os.path.join(save_path, 'exp_trajs_sac_{}.pkl'.format(args.num_rollouts))
         with open(save_path, 'wb') as f:
-            pickle.dump(path, f)
+            pass
+            # pickle.dump(path, f)
     # print(path)
     
