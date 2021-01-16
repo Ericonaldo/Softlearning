@@ -5,12 +5,12 @@ SAC, 50 expert traj, Deterministic Policy in testing
 
 | Envs | Mean | Std
 | ----  | ----  | ----  |
-| Ant | - | - |
+| Ant | 5404.5532 | 1520.4961 |
 | Hopper | 3402.9494 | 446.4877 |
-| Humanoid | - | - |
+| Humanoid | 6043.9907 | 726.1788 |
 | HalfCheetah | 13711.6445 | 111.4709 |
-| Walker2d | 5259.4805 | 1329.5388 |
-| Swimmer | - | - |
+| Walker2d | 5639.3267 | 29.9715 |
+| Swimmer | 139.2806 | 1.1204 |
 | AntSlim | 5418.8721 | 946.7947 |
 | HumanoidSlim | 5346.6181 | 712.2214 |
 | SwimmerSlim | 339.2811 | 0.7625 |
